@@ -1,0 +1,95 @@
+/* --- Styles specific to the Landing Page --- */
+
+.hero-container {
+    height: 100vh;
+    width: 100%;
+    position: relative;
+    overflow: hidden; /* Important for keeping orbs contained */
+    display: flex;
+    flex-direction: column;
+}
+
+.background-effects {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 0; /* Behind the content */
+}
+
+#particle-canvas {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.orb {
+    position: absolute;
+    border-radius: 50%;
+    opacity: 0.25; /* 25% opacity as requested */
+    filter: blur(120px);
+    transition: transform 0.5s ease-out;
+}
+
+.orb-1 {
+    width: 500px;
+    height: 500px;
+    background-color: var(--accent-cyan);
+    top: -10%;
+    left: -10%;
+}
+
+.orb-2 {
+    width: 400px;
+    height: 400px;
+    background-color: var(--accent-purple);
+    bottom: -15%;
+    right: -5%;
+}
+
+.hero-main-content {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 1rem;
+    z-index: 1; /* Ensures content is above the background effects */
+}
+
+.animated-gradient {
+    background-image: linear-gradient(to right, var(--accent-cyan), var(--accent-purple));
+    background-clip: text;
+    -webkit-background-clip: text; /* For Safari */
+    color: transparent;
+    background-size: 200% 200%;
+    animation: gradient-flow 5s ease infinite;
+}
+
+@keyframes gradient-flow {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+.fade-in-up {
+    animation: fade-in-up-anim 0.8s ease-out forwards;
+    opacity: 0;
+}
+
+@keyframes fade-in-up-anim {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.hero-cta-buttons {
+    margin-top: 2.5rem; /* 40px */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+}
