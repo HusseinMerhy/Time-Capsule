@@ -1,0 +1,98 @@
+/* --- Styles for the Capsule Card Component --- */
+.capsule-card {
+    /* Sizing and Layout */
+    width: 100%;
+    max-width: 320px;
+    min-height: 300px;
+    display: flex;
+    flex-direction: column;
+
+    /* Styling */
+    background: var(--bg-container);
+    border: 1px solid var(--border-color);
+    border-radius: 20px;
+    padding: 1.5rem; /* 24px */
+    position: relative; /* For the glow effect */
+    overflow: hidden; /* Keeps glow contained */
+    
+    /* Animation */
+    transition: all 0.3s ease-out;
+}
+
+.capsule-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 20px 30px -10px rgba(0,0,0,0.3);
+    border-color: var(--accent-cyan);
+}
+
+/* --- Card Sections --- */
+.card-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+
+.card-emoji {
+    font-size: 48px;
+    line-height: 1;
+}
+
+.card-location {
+    /* Uses global .label-text class */
+    color: var(--text-secondary);
+}
+
+.card-body {
+    margin-top: 1rem;
+}
+
+.card-title {
+    /* Uses global .h3 class */
+    margin-bottom: 0.5rem;
+}
+
+.card-message {
+    /* Uses global .body-text class */
+    color: var(--text-secondary);
+    
+    /* Truncate the message to 3 lines */
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;  
+    overflow: hidden;
+}
+
+.card-footer {
+    margin-top: auto; /* Pushes footer to the bottom */
+    padding-top: 1rem;
+}
+
+.card-footer-text {
+    /* Uses global .label-text class */
+    color: var(--text-secondary);
+    font-weight: 600;
+    text-transform: uppercase;
+}
+
+/* --- Glow effect on hover --- */
+.card-glow {
+    position: absolute;
+    top: 0; 
+    left: 0; 
+    right: 0; 
+    bottom: 0;
+    background: radial-gradient(circle at 50% -20%, rgba(34, 211, 238, 0.15), transparent 70%);
+    opacity: 0;
+    transition: opacity 0.4s ease;
+    z-index: 0;
+}
+
+.capsule-card:hover .card-glow {
+    opacity: 1;
+}
+
+/* Ensure content is above the glow */
+.card-top, .card-body, .card-footer {
+    position: relative;
+    z-index: 1;
+}
